@@ -2,7 +2,7 @@ from django.db import transaction
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from .models import Product, Customer, Bill, BillItem, Quotation, ServiceEntry
+from .models import Product, Customer, Bill, BillItem, Quotation, QuotationItem, ServiceEntry
 from .serializers import (
     ProductSerializer, CustomerSerializer, 
     BillSerializer, QuotationSerializer, ServiceEntrySerializer
@@ -99,15 +99,28 @@ class QuotationViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         data = request.data
+        items_data = data.get('items', []) 
         try:
             with transaction.atomic():
                 quotation = Quotation.objects.create(
-                    quotation_no=data.get('quotation_no'),
                     customer_id=data.get('customer'),
                     total_amount=data.get('total_amount'),
                 )
                 
-                return Response({"message": "✅ Quotation Saved!", "id": quotation.id}, status=status.HTTP_201_CREATED)
+                for item in items_data:
+                    p = Product.objects.get(id=item['product'])
+                    
+                    QuotationItem.objects.create(
+                        quotation=quotation,
+                        product=p,
+                        quantity=item['quantity'],
+                        price=p.selling_price_include_tax or p.selling_price or 0
+                    )
+                
+                return Response({
+                    "message": "✅ Quotation Saved with Items!", 
+                    "id": quotation.id
+                }, status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 

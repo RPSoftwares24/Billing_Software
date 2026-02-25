@@ -31,28 +31,24 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           <hr className="sidebar-divider" />
           
           <ul>
-            {/* Billing Form Section */}
             <li className={location.pathname.includes("/quotation") && !location.pathname.includes("/pages/quotation") ? "active" : ""}>
               <Link to={`/quotation/${businessId}/quotation`}>
                 <FaFileAlt /> <span>Billing Form</span>
               </Link>
             </li>
 
-            {/* NEW: Quotation Form Section */}
             <li className={location.pathname.includes("/pages/quotation") ? "active" : ""}>
               <Link to={`/quotation/${businessId}/pages/quotation`}>
                 <FaFileInvoice /> <span>Quotation Form</span>
               </Link>
             </li>
 
-            {/* NEW: Service Details Section */}
             <li className={location.pathname.includes("/pages/services") ? "active" : ""}>
               <Link to={`/service/${businessId}/pages/services`}>
                 <FaTools /> <span>Service Details</span>
               </Link>
             </li>
 
-            {/* Sales History Section */}
             <li className={location.pathname.includes("/history") ? "active" : ""}>
               <Link to={`/quotation/${businessId}/history`}>
                 <FaHistory /> <span>Sales History</span>

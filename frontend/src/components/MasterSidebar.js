@@ -31,35 +31,30 @@ const MasterSidebar = ({ setActiveTab, activeTab }) => {
           <hr className="sidebar-divider" />
           
           <ul>
-            {/* 1. Products Section */}
             <li className={activeTab === 'products' ? "active" : ""}>
               <Link to={`/quotation/${bId|| '1'}/master/ProductMaster`} className="sidebar-link-style" onClick={() => {setActiveTab('products'); setIsOpen(false);}}>
                 <FaBox /> <span>Products Master</span>
               </Link>
             </li>
             
-            {/* 2. Customers Section */}
             <li className={activeTab === 'customers' ? "active" : ""}>
               <Link to={`/quotation/${bId}/master/CustomerMaster`} className="sidebar-link-style" onClick={() => {setActiveTab('customers'); setIsOpen(false);}}>
                 <FaUsers /> <span>Customers Master</span>
               </Link>
             </li>
 
-            {/* 3. NEW: Quotation Form Section (Added) */}
             <li className={activeTab === 'quotation' ? "active" : ""}>
               <Link to={`/quotation/${bId}/pages/quotation`} className="sidebar-link-style" onClick={() => {setActiveTab('quotation'); setIsOpen(false);}}>
                 <FaFileInvoice /> <span>Quotation Form</span>
               </Link>
             </li>
 
-            {/* 4. Service Details Section (Path Updated to match main sidebar) */}
             <li className={activeTab === 'services' ? "active" : ""}>
               <Link to={`/service/${bId}/pages/services`} className="sidebar-link-style" onClick={() => {setActiveTab('services'); setIsOpen(false);}}>
                 <FaTools /> <span>Service Details</span>
               </Link>
             </li>
 
-            {/* 5. Sales History Section */}
             <li className={activeTab === 'history' ? "active" : ""}>
               <Link to={`/quotation/${bId}/history`} className="sidebar-link-style" onClick={() => {setActiveTab('history'); setIsOpen(false);}}>
                 <FaHistory /> <span>Sales History</span>

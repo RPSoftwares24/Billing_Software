@@ -72,8 +72,6 @@ class QuotationItem(models.Model):
         return f"{self.product.product_name} * {self.quantity}"
 
 
-
-
 class ServiceEntry(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="services")
     phone = models.CharField(max_length=15, blank=True, null=True)

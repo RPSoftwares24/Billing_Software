@@ -88,6 +88,10 @@ DATABASES = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://app.rpsoftwares.com",
+    "https://api.rpsoftwares.com",
+]
 ALLOWED_HOSTS = ['*']
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

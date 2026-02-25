@@ -5,7 +5,8 @@ import BillingForm from './pages/billing/BillingForm';
 import BillHistory from './pages/billing/BillHistory';
 import ProductMaster from './pages/master/ProductMaster';
 import CustomerMaster from './pages/master/CustomerMaster';
-
+import QuotationForm from "./pages/QuotationForm";
+import ServicePage from "./pages/ServicePage";
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -30,6 +31,8 @@ function App() {
 
             <Route path="/quotation/:businessId/master/ProductMaster" element={<ProductMaster />} />
             <Route path="/quotation/:businessId/master/CustomerMaster" element={<CustomerMaster />} />
+            <Route path="/quotation/:businessId/pages/quotation" element={<QuotationForm />} />
+            <Route path="/service/:businessId/pages/services" element={<ServicePage />} />
             <Route path="*" element={<Navigate to="/billing" />} />
           </Routes>
         </main>

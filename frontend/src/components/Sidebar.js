@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
-import { FaBox, FaUsers, FaFileAlt, FaHistory, FaPowerOff } from "react-icons/fa"; // FaHistory sethachu
+import { FaBox, FaUsers, FaFileAlt, FaHistory, FaPowerOff, FaFileInvoice, FaTools } from "react-icons/fa"; // Icons add panniyachu
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const location = useLocation();
@@ -31,18 +31,36 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           <hr className="sidebar-divider" />
           
           <ul>
-            <li className={location.pathname.includes("/quotation") && location.pathname.includes("/quotation") ? "active" : ""}>
+            {/* Billing Form Section */}
+            <li className={location.pathname.includes("/quotation") && !location.pathname.includes("/pages/quotation") ? "active" : ""}>
               <Link to={`/quotation/${businessId}/quotation`}>
                 <FaFileAlt /> <span>Billing Form</span>
               </Link>
             </li>
 
-            {/* Bill History Link Added */}
+            {/* NEW: Quotation Form Section */}
+            <li className={location.pathname.includes("/pages/quotation") ? "active" : ""}>
+              <Link to={`/quotation/${businessId}/pages/quotation`}>
+                <FaFileInvoice /> <span>Quotation Form</span>
+              </Link>
+            </li>
+
+            {/* NEW: Service Details Section */}
+            <li className={location.pathname.includes("/pages/services") ? "active" : ""}>
+              <Link to={`/service/${businessId}/pages/services`}>
+                <FaTools /> <span>Service Details</span>
+              </Link>
+            </li>
+
+            {/* Sales History Section */}
             <li className={location.pathname.includes("/history") ? "active" : ""}>
               <Link to={`/quotation/${businessId}/history`}>
                 <FaHistory /> <span>Sales History</span>
               </Link>
             </li>
+
+            <hr className="sidebar-divider" />
+            <p className="sidebar-label">Master Data</p>
 
             <li className={location.pathname.includes("/ProductMaster") ? "active" : ""}>
               <Link to={`/quotation/${businessId}/master/ProductMaster`}> 

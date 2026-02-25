@@ -6,25 +6,18 @@ import API from "../services/api";
 function ServicePage() {
   const [services, setServices] = useState([]);
   const [customers, setCustomers] = useState([]);
-
   const [showAddForm, setShowAddForm] = useState(false);
   const [form, setForm] = useState({
-    customer: "",
-    phone: "",
-    address: "",
-    callFor: "",
-    status: "Followup",
-    amount: "",
-    notes: ""
+    customer: "", phone: "", address: "", callFor: "", status: "Followup", amount: "", notes: ""
   });
 
   const [searchCustomer, setSearchCustomer] = useState("");
   const [filteredCustomers, setFilteredCustomers] = useState([]);
   const [editId, setEditId] = useState(null);
-
   const [statusPage, setStatusPage] = useState(0);
-  const [setSelectedCustomer] = useState(null);
-  const [setShowCustomerHistory] = useState(false);
+
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [showCustomerHistory, setShowCustomerHistory] = useState(false);
   const [selectedCustomerFullDetails, setSelectedCustomerFullDetails] = useState(null);
 
   const handleSelectCustomer = (customer) => {
@@ -54,9 +47,8 @@ function ServicePage() {
 
   const fetchServices = async () => {
     try {
-      const res = await fetch("http://192.168.1.44:8000/api/services/");
-      const data = await res.json();
-      setServices(data);
+      const res = await API.get("/services/");
+      setServices(res.data);
     } catch (err) {
       console.error("Failed to fetch services:", err);
     }
@@ -64,9 +56,8 @@ function ServicePage() {
 
   const fetchCustomers = async () => {
     try {
-      const res = await fetch("http://192.168.1.44:8000/api/customers/");
-      const data = await res.json();
-      setCustomers(data);
+      const res = await API.get("/customers/");
+      setCustomers(res.data);
     } catch (err) {
       console.error("Failed to fetch customers:", err);
     }

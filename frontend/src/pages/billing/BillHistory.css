@@ -1,0 +1,154 @@
+.history-container {
+    padding: 25px;
+    background: #f8fafc;
+    min-height: 100vh;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.history-stats {
+    display: flex;
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    border-left: 4px solid #4f46e5;
+}
+
+.stat-card span { font-size: 0.8rem; color: #64748b; }
+.stat-card strong { font-size: 1.2rem; color: #1e293b; }
+
+.filter-section {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.search-bar, .date-picker {
+    display: flex;
+    align-items: center;
+    background: #f1f5f9;
+    padding: 8px 15px;
+    border-radius: 6px;
+    flex: 1;
+}
+
+.search-bar input, .date-picker input {
+    background: transparent;
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.history-table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.history-table th {
+    background: #f1f5f9;
+    padding: 15px;
+    text-align: left;
+    color: #475569;
+    font-weight: 600;
+}
+
+.history-table td {
+    padding: 15px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+}
+
+.bill-tag {
+    background: #e0e7ff;
+    color: #4338ca;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.pay-status {
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+.pay-status.cash { background: #dcfce7; color: #15803d; }
+.pay-status.online { background: #e0f2fe; color: #0369a1; }
+.pay-status.credit { background: #fee2e2; color: #b91c1c; }
+
+.actions button {
+    margin-right: 10px;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.view-btn { background: #f1f5f9; color: #64748b; }
+.print-btn { background: #4f46e5; color: white; }
+.print-btn:hover { background: #4338ca; }
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1000;
+}
+
+.view-bill-modal {
+  background: white;
+  width: 600px; max-width: 90%;
+  border-radius: 8px; padding: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-header {
+  display: flex; justify-content: space-between;
+  border-bottom: 2px solid #eee; padding-bottom: 10px;
+}
+
+.close-icon { cursor: pointer; color: red; font-size: 20px; }
+
+.modal-item-table {
+  width: 100%; border-collapse: collapse; margin-top: 20px;
+}
+
+.modal-item-table th { background: #f8f9fa; text-align: left; padding: 10px; }
+.modal-item-table td { padding: 10px; border-bottom: 1px solid #eee; }
+
+.modal-footer {
+  margin-top: 20px; text-align: right;
+  border-top: 2px solid #eee; padding-top: 15px;
+}
+
+.final-total h2 { color: #2c3e50; margin: 5px 0; }
+
+.modal-print-btn {
+  background: #4caf50; color: white; border: none;
+  padding: 10px 20px; border-radius: 5px; cursor: pointer;
+}

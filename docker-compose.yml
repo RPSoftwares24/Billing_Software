@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
   db:
     image: postgres:15
@@ -28,6 +29,46 @@ services:
     image: cloudflare/cloudflared:latest
     restart: always
     command: tunnel run --token docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token eyJhIjoiOWYwZGE1YmRjODhkMGUwZDg0ZGM1ZThiMDg4MGMwNTIiLCJ0IjoiYzkwM2RlMmItNTc0Mi00OGU5LThhZjgtZDQ0Mjc5OGFhZDgwIiwicyI6IlpHRmxaV1F5TlRNdFpESmxOaTAwT0RVMUxUaGxZakF0WW1Rd01XSmxaamc0TnpWaiJ9
+=======
+version: '3.8'
+
+services:
+  # Database - PostgreSQL
+  db:
+    image: postgres:15
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=Billing
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mynewpass
+
+  # Backend - Django
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    command: >
+      sh -c "python manage.py makemigrations billing &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DJANGO_SETTINGS_MODULE=backend.settings
+      - PYTHONPATH=/app
+    depends_on:
+      - db
+
+  # Frontend - Node.js
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    stdin_open: true 
+>>>>>>> fd95c044a6f66e210addec5d5221ab3584d4702f
     depends_on:
       - backend
 
